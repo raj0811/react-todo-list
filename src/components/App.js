@@ -38,24 +38,21 @@ function App() {
     setSelectedTodo(todo);
   };
 
-  const handleDeleteTodo = (todoId) => {
-    // Send a DELETE request to the API endpoint to delete the todo item
-    fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
+  const handleDeleteTodo = (id) => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
       method: 'DELETE',
     })
-      .then((response) => {
+      .then(response => {
         if (response.ok) {
-          // Remove the deleted todo item from the todos state
-          const updatedTodos = todos.filter((todo) => todo.id !== todoId);
+
+          // Remove the deleted todo from the todos state
+          const updatedTodos = todos.filter(todo => todo.id !== id);
+          // console.log(updatedTodos);
           setTodos(updatedTodos);
-          alert('Delete successful');
-        } else {
-          throw new Error('Failed to delete todo item');
         }
       })
-      .catch((error) => {
-        console.error(error);
-        alert('Failed to delete todo item');
+      .catch(error => {
+        console.log('Error deleting todo:', error);
       });
   };
   
@@ -74,7 +71,7 @@ function App() {
             element={<AddItem onAddTodo={handleAddTodo} />}
           />
           <Route
-            path="/update/:id"
+            path="/update/:userId"
             element={<Update todos={todos} onUpdateTodo={handleUpdateTodo} />}
           />
 
@@ -82,6 +79,8 @@ function App() {
             path="/delete/:id"
             element={<List todos={todos} onDeleteTodo={handleDeleteTodo} />}
           />
+
+
 
 
 

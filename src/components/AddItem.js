@@ -20,8 +20,10 @@ const AddItem = ({ onAddTodo }) => {
       },
     })
       .then(response => response.json())
+      // .then((json) => console.log(json));
       .then(json => {
         const updatedTodo = { ...newTodo, id: json.id };
+        console.log('Added Todo:', updatedTodo)
         onAddTodo(updatedTodo);
       });
 

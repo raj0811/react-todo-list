@@ -1,0 +1,16 @@
+*{
+    padding: 0%;
+    margin: auto;
+}
+.nav{
+  background-image: linear-gradient( 111.4deg,  rgba(7,7,9,1) 6.5%, rgba(27,24,113,1) 93.2% );
+   color: wheat;
+   height: 8vh;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.link{
+   color: aliceblue;
+}

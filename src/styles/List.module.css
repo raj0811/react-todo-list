@@ -1,0 +1,35 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+.body{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+}
+
+.lists{
+    /* border: 2px solid red; */
+    width: 90%;
+}
+
+
+
+
+.all{
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+    width: 50%;
+    height: 4vh;
+    /* border-bottom: 1px solid black; */
+    /* background-color: blue; */
+    margin: 1%;
+}
+
+.btn{
+    background-color: rgb(252, 87, 87);
+    border: none;
+    padding: 1%;
+}

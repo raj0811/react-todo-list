@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Update = ({ todos, onUpdateTodo }) => {
-  const { id } = useParams();
+  const { userId } = useParams();
+  console.log(userId);
   const [updatedTodo, setUpdatedTodo] = useState(null);
 
   useEffect(() => {
-    // Find the todo to be updated based on the provided ID
-    const todoToUpdate = todos.find(todo => todo.id === Number(id));
+    // Find the todo to be updated based on the provided userID
+    const todoToUpdate = todos.find(todo => todo.userId === Number(userId));
     setUpdatedTodo(todoToUpdate);
-  }, [id, todos]);
+  }, [userId, todos]);
+
+  
 
   const updateTodo = () => {
     if (updatedTodo) {
+      console.log(updatedTodo);
+      
       fetch(`https://jsonplaceholder.typicode.com/posts/${updatedTodo.id}`, {
         method: 'PUT',
         body: JSON.stringify(updatedTodo),
@@ -21,10 +26,12 @@ const Update = ({ todos, onUpdateTodo }) => {
         },
       })
         .then(response => response.json())
+        // .then((json) => console.log(json));
         .then(json => {
           onUpdateTodo(json);
         });
     }
+
   };
 
   const handleInputChange = event => {
